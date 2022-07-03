@@ -26,9 +26,9 @@ app.use(express.json());
 // })
 
 app.get('/',authorize ,(req, res) => {
-    const val = req.headers['user-agent'];
-    const getUser = httpContext.get('current_user');
-    res.send(getUser);
+    // const val = req.headers['user-agent'];
+    // const getUser = httpContext.get('current_user');
+    res.send('Halluuuu welcome!!');
 }); 
 
 app.post('/login', async (req, res) => {
