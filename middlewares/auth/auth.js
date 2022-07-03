@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.SECRET_KEY;
 
+// authentication middleware.
 const authenticateUser = (req, res, next) => {
     const token = req.headers['x-access-token'];
     console.log(token)
