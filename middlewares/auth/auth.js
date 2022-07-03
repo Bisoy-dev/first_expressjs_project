@@ -7,14 +7,16 @@ const authenticateUser = (req, res, next) => {
     const token = req.headers['x-access-token'];
     console.log(token)
     if(!token){
-        return res.status(401).send('Token is required to authencticate user!');
+        res.status(401);
+        throw new Error('Token is required to authencticate user!');
     } 
 
     try{
         const decodedToken = jwt.verify(token, secretKey);
         req.user = decodedToken;
     }catch(err){
-        return res.status(401).send(err);
+        res.status(401);
+        throw new Error(err);
     } 
 
     return next();
