@@ -10,20 +10,20 @@ const app = express();
 app.use(httpContext.middleware)
 app.use(express.json());
 
-app.use((req, res, next) => {
+// app.use((req, res, next) => {
     
-    httpContext.ns.bindEmitter(req);
-    httpContext.ns.bindEmitter(res);
-    const { userName, password } = req.body;
-    if(userName && password){
-        const user = users.filter(u => u.userName === userName)[0];
-        hashPass = bcrypt.hashSync(user.password, 10);
-        if (user && (bcrypt.compareSync(password, hashPass))) {
-            httpContext.set('current_user', 'user_obj');
-        }
-    }
-    next();
-})
+//     httpContext.ns.bindEmitter(req);
+//     httpContext.ns.bindEmitter(res);
+//     const { userName, password } = req.body;
+//     if(userName && password){
+//         const user = users.filter(u => u.userName === userName)[0];
+//         hashPass = bcrypt.hashSync(user.password, 10);
+//         if (user && (bcrypt.compareSync(password, hashPass))) {
+//             httpContext.set('current_user', 'user_obj');
+//         }
+//     }
+//     next();
+// })
 
 app.get('/',authorize ,(req, res) => {
     const val = req.headers['user-agent'];
